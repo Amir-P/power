@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - power (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - power (from `.symlinks/plugins/power/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  power:
+    :path: ".symlinks/plugins/power/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  power: 892d829d4ab61ebd15f264914bfd72250f994428
+
+PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
+
+COCOAPODS: 1.8.4

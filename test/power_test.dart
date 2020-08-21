@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await Power.platformVersion, '42');
+    expect(await Power.isLowPowerMode, '42');
   });
 }

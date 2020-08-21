@@ -1,14 +1,11 @@
-
 import 'dart:async';
-
 import 'package:flutter/services.dart';
 
 class Power {
-  static const MethodChannel _channel =
-      const MethodChannel('power');
+  static const MethodChannel _methodChannel =
+      const MethodChannel('com.amir_p/power');
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
+  static Future<bool> get isLowPowerMode async {
+    return await _methodChannel.invokeMethod('getPowerMode');
   }
 }
