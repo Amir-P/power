@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter/services.dart';
 import 'package:power/power.dart';
 
 void main() {
@@ -14,6 +13,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _lowPowerMode = false;
+  num _batteryLevel = -1;
 
   @override
   void initState() {
@@ -23,17 +23,16 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> initPowerState() async {
     bool lowPowerMode;
+    num batteryLevel;
 
-    try {
-      lowPowerMode = await Power.isLowPowerMode;
-    } on PlatformException {
-      lowPowerMode = false;
-    }
+    lowPowerMode = await Power.isLowPowerMode;
+    batteryLevel = await Power.batteryLevel;
 
     if (!mounted) return;
 
     setState(() {
       _lowPowerMode = lowPowerMode;
+      _batteryLevel = batteryLevel;
     });
   }
 
@@ -45,7 +44,14 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Power example app'),
         ),
         body: Center(
-          child: Text('Low power mode is ${_lowPowerMode ? 'on' : 'off'}'),
+          child: Column(
+            children: [
+              Text('Low power mode is ${_lowPowerMode ? 'on' : 'off'}'),
+              Text(
+                  'Battery level is ${_batteryLevel == -1 ? 'Unavailable' : _batteryLevel}'),
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
         ),
       ),
     );

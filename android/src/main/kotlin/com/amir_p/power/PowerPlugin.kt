@@ -1,6 +1,7 @@
 package com.amir_p.power
 
 import android.content.Context
+import android.os.BatteryManager
 import android.os.PowerManager
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -40,6 +41,10 @@ public class PowerPlugin : FlutterPlugin, MethodCallHandler {
             val powerManager: PowerManager = applicationContext.getSystemService(Context.POWER_SERVICE) as PowerManager
             val powerSaveMode: Boolean = powerManager.isPowerSaveMode
             result.success(powerSaveMode)
+        } else if (call.method == "getBatteryLevel") {
+            val batteryManager: BatteryManager = applicationContext.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+            val batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+            result.success(batteryLevel)
         } else {
             result.notImplemented()
         }

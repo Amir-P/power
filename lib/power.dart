@@ -8,4 +8,8 @@ class Power {
   static Future<bool> get isLowPowerMode async {
     return await _methodChannel.invokeMethod('getPowerMode');
   }
+
+  static Future<num> get batteryLevel async {
+    return await _methodChannel.invokeMethod('getBatteryLevel');
+  }
 }
