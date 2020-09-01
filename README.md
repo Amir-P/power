@@ -12,7 +12,7 @@ To use this plugin, add power as a dependency in your pubspec.yaml file.
   dependencies:
     flutter:
       sdk: flutter
-    power:
+    power: ^0.2.0
 ```
 
 ## Example
