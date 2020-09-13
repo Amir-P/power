@@ -45,6 +45,9 @@ public class PowerPlugin : FlutterPlugin, MethodCallHandler {
             val batteryManager: BatteryManager = applicationContext.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
             val batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
             result.success(batteryLevel)
+        } else if(call.method == "getChargingStatus"){
+            val batteryManager: BatteryManager = applicationContext.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+            result.success(batteryManager.isCharging)
         } else {
             result.notImplemented()
         }

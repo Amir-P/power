@@ -19,6 +19,10 @@ public class SwiftPowerPlugin: NSObject, FlutterPlugin {
             } else {
                 result(Int(device.batteryLevel * 100))
             }
+        } else if call.method == "getChargingStatus" {
+            var device = UIDevice.current
+            device.isBatteryMonitoringEnabled = true
+            result(device.batteryState == .charging || device.batteryState == .full)
         }
     }
 }

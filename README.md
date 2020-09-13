@@ -9,10 +9,10 @@ A Flutter plugin to access device power related information.
 To use this plugin, add power as a dependency in your pubspec.yaml file.
 
 ``` yaml
-  dependencies:
-    flutter:
-      sdk: flutter
-    power: ^0.2.0+1
+dependencies:
+  flutter:
+    sdk: flutter
+  power: ^0.3.0
 ```
 
 ## Example
@@ -28,7 +28,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _lowPowerMode = false;
+  bool _lowPowerMode = false, _isCharging = false;
   num _batteryLevel = -1;
 
   @override
@@ -38,16 +38,18 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> initPowerState() async {
-    bool lowPowerMode;
+    bool lowPowerMode, isCharging;
     num batteryLevel;
 
     lowPowerMode = await Power.isLowPowerMode;
+    isCharging = await Power.isCharging;
     batteryLevel = await Power.batteryLevel;
 
     if (!mounted) return;
 
     setState(() {
       _lowPowerMode = lowPowerMode;
+      _isCharging = isCharging;
       _batteryLevel = batteryLevel;
     });
   }
@@ -64,7 +66,7 @@ class _MyAppState extends State<MyApp> {
             children: [
               Text('Low power mode is ${_lowPowerMode ? 'on' : 'off'}'),
               Text(
-                  'Battery level is ${_batteryLevel == -1 ? 'Unavailable' : _batteryLevel}'),
+                  'Battery level is ${_batteryLevel == -1 ? 'Unavailable' : _batteryLevel} and is ${_isCharging ? 'Charging' : 'Discharging'}'),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
@@ -79,6 +81,6 @@ class _MyAppState extends State<MyApp> {
 
 - [x] Get low power mode
 - [x] Get battery level
-- [ ] Get charging status
+- [x] Get charging status
 - [ ] Build widgets in response to power changes
 - [ ] Disable animations in low power mode

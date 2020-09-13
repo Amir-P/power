@@ -1,3 +1,7 @@
+## 0.3.0
+
+* Added charging status getter
+
 ## 0.2.0+1
 
 * Updated README.md

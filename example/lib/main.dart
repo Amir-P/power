@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _lowPowerMode = false;
+  bool _lowPowerMode = false, _isCharging = false;
   num _batteryLevel = -1;
 
   @override
@@ -22,16 +22,18 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> initPowerState() async {
-    bool lowPowerMode;
+    bool lowPowerMode, isCharging;
     num batteryLevel;
 
     lowPowerMode = await Power.isLowPowerMode;
+    isCharging = await Power.isCharging;
     batteryLevel = await Power.batteryLevel;
 
     if (!mounted) return;
 
     setState(() {
       _lowPowerMode = lowPowerMode;
+      _isCharging = isCharging;
       _batteryLevel = batteryLevel;
     });
   }
@@ -48,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             children: [
               Text('Low power mode is ${_lowPowerMode ? 'on' : 'off'}'),
               Text(
-                  'Battery level is ${_batteryLevel == -1 ? 'Unavailable' : _batteryLevel}'),
+                  'Battery level is ${_batteryLevel == -1 ? 'Unavailable' : _batteryLevel} and is ${_isCharging ? 'Charging' : 'Discharging'}'),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),

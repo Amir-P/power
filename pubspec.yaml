@@ -1,7 +1,6 @@
 name: power
 description: A Flutter plugin to access device power related information.
-version: 0.2.0+1
-author: Amir_P
+version: 0.3.0
 homepage: https://github.com/Amir-P/power
 repository: https://github.com/Amir-P/power
 
