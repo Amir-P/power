@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Null safety
+
 ## 0.3.0
 
 * Added charging status getter
