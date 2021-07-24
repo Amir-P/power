@@ -22,19 +22,16 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> initPowerState() async {
-    bool lowPowerMode, isCharging;
-    num batteryLevel;
-
-    lowPowerMode = await Power.isLowPowerMode;
-    isCharging = await Power.isCharging;
-    batteryLevel = await Power.batteryLevel;
+    final lowPowerMode = await Power.isLowPowerMode;
+    final isCharging = await Power.isCharging;
+    final batteryLevel = await Power.batteryLevel;
 
     if (!mounted) return;
 
     setState(() {
-      _lowPowerMode = lowPowerMode;
-      _isCharging = isCharging;
-      _batteryLevel = batteryLevel;
+      _lowPowerMode = lowPowerMode ?? false;
+      _isCharging = isCharging ?? false;
+      _batteryLevel = batteryLevel ?? -1;
     });
   }
 
