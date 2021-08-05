@@ -29,9 +29,9 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _lowPowerMode = lowPowerMode ?? false;
-      _isCharging = isCharging ?? false;
-      _batteryLevel = batteryLevel ?? -1;
+      _lowPowerMode = lowPowerMode;
+      _isCharging = isCharging;
+      _batteryLevel = batteryLevel;
     });
   }
 

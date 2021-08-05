@@ -12,7 +12,7 @@ To use this plugin, add power as a dependency in your pubspec.yaml file.
 dependencies:
   flutter:
     sdk: flutter
-  power: ^0.4.0
+  power: ^0.5.0
 ```
 
 ## Example
@@ -45,9 +45,9 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _lowPowerMode = lowPowerMode ?? false;
-      _isCharging = isCharging ?? false;
-      _batteryLevel = batteryLevel ?? -1;
+      _lowPowerMode = lowPowerMode;
+      _isCharging = isCharging;
+      _batteryLevel = batteryLevel;
     });
   }
 

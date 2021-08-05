@@ -1,3 +1,7 @@
+## 0.5.0
+* Removed nullable return types @rahuldange09
+* Changed android minSdkVersion from 21 to 19 @rahuldange09
+
 ## 0.4.0
 
 * Null safety
